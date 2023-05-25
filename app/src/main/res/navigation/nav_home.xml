@@ -10,4 +10,19 @@
         android:name="mx.mauriciogs.mibanca.cards.MyCardsFragment"
         android:label="MyCardsFragment"
         tools:layout="@layout/mycards_fragment"/>
+    <fragment
+        android:id="@+id/myPaymentsFragment"
+        android:name="mx.mauriciogs.mibanca.payments.MyPaymentsFragment"
+        android:label="MyPaymentsFragment"
+        tools:layout="@layout/mypayments_fragment" />
+    <fragment
+        android:id="@+id/myTransactionsFragment"
+        android:name="mx.mauriciogs.mibanca.transactions.MyTransactionsFragment"
+        android:label="MyTransactionsFragment"
+        tools:layout="@layout/mytransactions_fragment"/>
+    <fragment
+        android:id="@+id/myAccountFragment"
+        android:name="mx.mauriciogs.mibanca.account.MyAccountFragment"
+        android:label="MyAccountFragment"
+        tools:layout="@layout/myaccount_fragment"/>
 </navigation>

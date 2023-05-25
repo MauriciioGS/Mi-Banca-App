@@ -1,5 +1,6 @@
 package mx.mauriciogs.mibanca.login.signin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.databinding.SigninFragmentBinding
 import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
+import mx.mauriciogs.mibanca.main.MainActivity
 
 @AndroidEntryPoint
 class SignInFragment: Fragment(R.layout.signin_fragment) {
@@ -52,7 +54,7 @@ class SignInFragment: Fragment(R.layout.signin_fragment) {
     private fun signInUi(singInUIModelState: SingInUIModel) = singInUIModelState.run {
         //TODO if (showProgress)
         if (showError != null) showUiError(showError)
-        if (loginSuccess) Toast.makeText(requireActivity(), "Login success", Toast.LENGTH_SHORT).show()
+        if (loginSuccess) startActivity(Intent(requireActivity(), MainActivity::class.java)).apply { requireActivity().finish() }
     }
 
     private fun showUiError(error: Exception) {

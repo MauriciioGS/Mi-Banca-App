@@ -19,4 +19,5 @@
     <string name="error_login">Usuario y/o contraseña incorrectos</string>
     <string name="no_data_error">Por favor ingresa tu correo y contraseña</string>
     <string name="no_user_error">No existe el usuario</string>
+    <string name="accept_permissions">Acepta los permisos para continuar utilizando Mi Banca App</string>
 </resources>

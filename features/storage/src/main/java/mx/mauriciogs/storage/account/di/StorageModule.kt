@@ -45,6 +45,10 @@ class StorageModule {
 
     @Provides
     fun providesUserProfileDao(userBancaRoomDatabase: UserBancaDatabase) = userBancaRoomDatabase.userDao
+    @Provides
+    fun providesCardsDao(userBancaRoomDatabase: UserBancaDatabase) = userBancaRoomDatabase.cardsDao
+    @Provides
+    fun providesPaymentsDao(userBancaRoomDatabase: UserBancaDatabase) = userBancaRoomDatabase.paymentsDao
 
     @Provides
     fun providesUserLocalDataSource(userDao: UserDao) = UserLocalDataSource(userDao)

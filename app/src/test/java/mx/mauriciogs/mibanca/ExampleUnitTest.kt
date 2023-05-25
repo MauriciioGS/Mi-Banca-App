@@ -1,4 +1,4 @@
-package mx.mauriciogs.myapplication
+package mx.mauriciogs.mibanca
 
 import org.junit.Test
 

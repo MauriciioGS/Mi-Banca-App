@@ -1,4 +1,4 @@
-package mx.mauriciogs.myapplication
+package mx.mauriciogs.mibanca
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

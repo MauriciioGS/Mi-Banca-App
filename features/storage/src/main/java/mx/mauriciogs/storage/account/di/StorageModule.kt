@@ -1,0 +1,44 @@
+package mx.mauriciogs.storage.account.di
+
+import android.app.Application
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import mx.mauriciogs.storage.account.data.datasource.local.UserBancaDatabase
+import mx.mauriciogs.storage.account.data.datasource.local.UserDao
+import mx.mauriciogs.storage.account.data.datasource.local.UserLocalDataSource
+import mx.mauriciogs.storage.encryption.Passphrase
+import net.sqlcipher.database.SupportFactory
+
+@Module
+@InstallIn(SingletonComponent::class)
+class StorageModule {
+
+    @Provides
+    fun providesMainKeyAlias() = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+    @Provides
+    fun providesPassphrase(application: Application, mainKeyAlias: String) =
+        Passphrase(EncryptedSharedPreferences.create("encSharedPreferencesRoomBanca",
+            mainKeyAlias,
+            application,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM))
+
+    @Provides
+    fun providesSupportFactory(passphrase: Passphrase) = SupportFactory(passphrase.getPassphrase())
+
+    @Provides
+    fun providesBancaRoomDatabase(application: Application, supportFactory: SupportFactory) =
+        UserBancaDatabase.getDatabase(application)
+            .openHelperFactory(supportFactory)
+            .build()
+
+    @Provides
+    fun providesUserProfileDao(userBancaRoomDatabase: UserBancaDatabase) = userBancaRoomDatabase.userDao
+
+    fun providesUserLocalDataSource(userDao: UserDao) = UserLocalDataSource(userDao)
+}

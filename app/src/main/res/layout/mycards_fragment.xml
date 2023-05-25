@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/btnNewCard"
-        style="@style/button_accept_gral"
+        style="@style/button_secondary"
         android:layout_width="@dimen/dimen0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen16dp"

@@ -9,6 +9,7 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -78,7 +79,7 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
 
     private fun initUI() {
         with(binding) {
-            btnNewCard.setOnClickListener {  }
+            btnNewCard.setOnClickListener { findNavController().navigate(MyCardsFragmentDirections.actionMyCardsFragmentToNewCardFragment()) }
         }
     }
 }

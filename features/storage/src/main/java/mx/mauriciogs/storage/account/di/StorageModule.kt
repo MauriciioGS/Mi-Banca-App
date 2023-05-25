@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import mx.mauriciogs.storage.BuildConfig
 import mx.mauriciogs.storage.account.data.datasource.local.UserBancaDatabase
 import mx.mauriciogs.storage.account.data.datasource.local.UserDao
 import mx.mauriciogs.storage.account.data.datasource.local.UserLocalDataSource
@@ -22,7 +23,7 @@ class StorageModule {
 
     @Provides
     fun providesPassphrase(application: Application, mainKeyAlias: String) =
-        Passphrase(EncryptedSharedPreferences.create("encSharedPreferencesRoomBanca",
+        Passphrase(EncryptedSharedPreferences.create(BuildConfig.BANCA_DB_ENCKEY_FILE,
             mainKeyAlias,
             application,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

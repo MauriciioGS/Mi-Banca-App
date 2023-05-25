@@ -6,6 +6,7 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import androidx.annotation.NonNull
+import mx.mauriciogs.storage.BuildConfig
 import java.io.IOException
 import java.security.*
 import javax.crypto.*
@@ -20,9 +21,9 @@ class Passphrase constructor(
         private const val ALIAS = "mibancakeystore"
         private const val TRANSFORMATION = "AES/CBC/NoPadding"
         private const val ANDROID_KEY_STORE = "AndroidKeyStore"
-        private val CHARSET = Charsets.UTF_8 // estaba en otro
+        private val CHARSET = Charsets.UTF_8 // otro
         private const val IV_KEY = "ivkey"
-        private const val DB_KEY = "dbkey"
+        private const val DB_KEY = BuildConfig.BANCA_DB_KEY
     }
 
     private var passphrase: ByteArray? = null

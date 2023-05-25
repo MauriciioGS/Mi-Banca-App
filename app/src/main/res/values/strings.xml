@@ -10,4 +10,8 @@
     <string name="header_welcome">Bienvenido a Mi Banca App</string>
     <string name="to_start_text">A continuación ingresa tus datos para crear una cuenta con nosotros y comenzar a distrutar de nuestros servicios.</string>
     <string name="tu_nombre_hint">Tu nombre completo</string>
+
+    <string name="toast_introduce_real_name">Introduce tu nombre completo</string>
+    <string name="toast_introduce_name">El nombre de usuario debe contener al menos 6 caracteres alfanuméricos</string>
+    <string name="toast_introduce_passw">La contraseña debe contener al menos 6 caracteres alfanuméricos</string>
 </resources>

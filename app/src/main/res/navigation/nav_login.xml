@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="mx.mauriciogs.mibanca.login.SignInFragment"
+        android:name="mx.mauriciogs.mibanca.login.signin.SignInFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/signin_fragment"/>
+        tools:layout="@layout/signin_fragment">
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="mx.mauriciogs.mibanca.login.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/register_fragment"/>
 </navigation>

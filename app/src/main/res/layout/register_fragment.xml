@@ -1,37 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/ivClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen48dp"
-        android:layout_marginHorizontal="@dimen/dimen16dp"
-        android:textAlignment="center"
-        android:text="@string/header_welcome"
-        android:fontFamily="@font/montserratbold"
-        android:textSize="@dimen/dimen24sp"
-        android:textColor="@color/textBold"
+        android:layout_marginTop="@dimen/dimen24dp"
+        android:layout_marginEnd="@dimen/dimen32dp"
+        android:elevation="@dimen/dimen3dp"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen250dp"
+        android:src="@drawable/bancavector2"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:src="@drawable/bancavector"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen16dp"
         android:layout_marginBottom="@dimen/dimen32dp"
+        android:gravity="center"
+        android:text="@string/to_start_text"
+        app:layout_constraintBottom_toTopOf="@+id/otfRealName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otfRealName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen16dp"
+        android:layout_marginVertical="@dimen/dimen16dp"
+        android:hint="@string/tu_nombre_hint"
         app:layout_constraintBottom_toTopOf="@+id/otfUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRealname"
+            style="@style/EditTextGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/otfUsername"
@@ -80,19 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen16dp"
-        android:layout_marginBottom="@dimen/dimen16dp"
-        android:text="@string/iniciar_sesion"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnRegister"
-        style="@style/button_secondary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen32dp"
-        android:layout_marginHorizontal="@dimen/dimen16dp"
+        android:layout_marginBottom="@dimen/dimen64dp"
         android:text="@string/crear_una_cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

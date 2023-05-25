@@ -10,6 +10,7 @@
 
     <color name="primary">#FFDC0000</color>
     <color name="primaryVariant">#FF850000</color>
+    <color name="textBold">#570000</color>
     <color name="secondary">#FFFFDB89</color>
     <color name="secondaryVariant">#FFFFF6C3</color>
 

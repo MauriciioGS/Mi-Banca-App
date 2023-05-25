@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/myCardsFragment"
+        android:icon="@drawable/baseline_credit_card_24"
+        app:showAsAction="ifRoom"
+        android:title="Mis tarjetas"/>
+
+    <item
+        android:id="@+id/myPaymentsFragment"
+        android:icon="@drawable/baseline_attach_money_24"
+        app:showAsAction="ifRoom"
+        android:title="Mis pagos"/>
+
+    <item
+        android:id="@+id/myTransactionsFragment"
+        android:icon="@drawable/baseline_format_list_bulleted_24"
+        app:showAsAction="ifRoom"
+        android:title="Mis movimientos"/>
+
+    <item
+        android:id="@+id/myAccountFragment"
+        android:icon="@drawable/baseline_person_24"
+        app:showAsAction="ifRoom"
+        android:title="Mi Cuenta"/>
+</menu>

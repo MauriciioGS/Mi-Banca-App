@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mx.mauriciogs.storage.BuildConfig
+import mx.mauriciogs.storage.account.data.UserRepository
 import mx.mauriciogs.storage.account.data.datasource.local.UserBancaDatabase
 import mx.mauriciogs.storage.account.data.datasource.local.UserDao
 import mx.mauriciogs.storage.account.data.datasource.local.UserLocalDataSource
@@ -41,5 +42,9 @@ class StorageModule {
     @Provides
     fun providesUserProfileDao(userBancaRoomDatabase: UserBancaDatabase) = userBancaRoomDatabase.userDao
 
+    @Provides
     fun providesUserLocalDataSource(userDao: UserDao) = UserLocalDataSource(userDao)
+
+    @Provides
+    fun providesUserRepository(userLocalDataSource: UserLocalDataSource) = UserRepository(userLocalDataSource)
 }

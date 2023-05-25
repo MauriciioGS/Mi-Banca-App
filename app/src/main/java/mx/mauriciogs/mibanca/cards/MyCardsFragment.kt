@@ -77,6 +77,8 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
     }
 
     private fun initUI() {
-
+        with(binding) {
+            btnNewCard.setOnClickListener {  }
+        }
     }
 }

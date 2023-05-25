@@ -4,6 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="@dimen/dimen32dp"
+        android:layout_height="@dimen/dimen32dp"
+        android:layout_marginTop="@dimen/dimen24dp"
+        android:layout_marginEnd="@dimen/dimen32dp"
+        android:elevation="@dimen/dimen3dp"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"

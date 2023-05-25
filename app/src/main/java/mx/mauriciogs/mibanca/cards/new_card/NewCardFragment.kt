@@ -3,9 +3,11 @@ package mx.mauriciogs.mibanca.cards.new_card
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.databinding.NewcardFragmentBinding
 import mx.mauriciogs.mibanca.extensions.viewBinding
+import mx.mauriciogs.mibanca.main.MainActivity
 
 class NewCardFragment: Fragment(R.layout.newcard_fragment) {
 
@@ -22,8 +24,9 @@ class NewCardFragment: Fragment(R.layout.newcard_fragment) {
     }
 
     private fun initUI() {
+        (requireActivity() as MainActivity).binding.bottomNav.visibility = View.GONE
         with(binding) {
-
+            ivClose.setOnClickListener { findNavController().popBackStack() }
         }
     }
 }

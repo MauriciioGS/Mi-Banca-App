@@ -19,6 +19,7 @@ import mx.mauriciogs.mibanca.extensions.nonNullObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
 import mx.mauriciogs.mibanca.location.liveDataGPS
 import mx.mauriciogs.mibanca.location.permission.PermissionRequester
+import mx.mauriciogs.mibanca.main.MainActivity
 
 @AndroidEntryPoint
 class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
@@ -37,6 +38,7 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).binding.bottomNav.visibility = View.VISIBLE
         checkGPS()
     }
 

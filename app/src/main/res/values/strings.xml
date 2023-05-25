@@ -14,4 +14,9 @@
     <string name="toast_introduce_real_name">Introduce tu nombre completo</string>
     <string name="toast_introduce_name">El nombre de usuario debe contener al menos 6 caracteres alfanuméricos</string>
     <string name="toast_introduce_passw">La contraseña debe contener al menos 6 caracteres alfanuméricos</string>
+    <string name="success_register">Registro exitoso!</string>
+    <string name="register_failed">Ha ocurrido un error al registrar</string>
+    <string name="error_login">Usuario y/o contraseña incorrectos</string>
+    <string name="no_data_error">Por favor ingresa tu correo y contraseña</string>
+    <string name="no_user_error">No existe el usuario</string>
 </resources>

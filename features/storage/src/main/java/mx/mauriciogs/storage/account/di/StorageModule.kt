@@ -14,6 +14,7 @@ import mx.mauriciogs.storage.account.data.datasource.local.UserDao
 import mx.mauriciogs.storage.account.data.datasource.local.UserLocalDataSource
 import mx.mauriciogs.storage.encryption.Passphrase
 import net.sqlcipher.database.SupportFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -23,6 +24,7 @@ class StorageModule {
     fun providesMainKeyAlias() = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
     @Provides
+    @Singleton
     fun providesPassphrase(application: Application, mainKeyAlias: String) =
         Passphrase(EncryptedSharedPreferences.create(BuildConfig.BANCA_DB_ENCKEY_FILE,
             mainKeyAlias,
@@ -31,9 +33,11 @@ class StorageModule {
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM))
 
     @Provides
+    @Singleton
     fun providesSupportFactory(passphrase: Passphrase) = SupportFactory(passphrase.getPassphrase())
 
     @Provides
+    @Singleton
     fun providesBancaRoomDatabase(application: Application, supportFactory: SupportFactory) =
         UserBancaDatabase.getDatabase(application)
             .openHelperFactory(supportFactory)

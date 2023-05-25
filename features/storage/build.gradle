@@ -22,14 +22,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BANCA_DB_ENCKEY_FILE", '"mx.mauricio.storage.mibancaEncDBkey"'
-            buildConfigField "String", "BANCA_DB_KEY", '"mx.mauricio.storage.mibancaDBkey"'
+            buildConfigField "String", "BANCA_DB_ENCKEY_FILE", '"mibancaEncDBkey"'
+            buildConfigField "String", "BANCA_DB_KEY", '"mibancaDBkey"'
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BANCA_DB_ENCKEY_FILE", '"mx.mauricio.storage.mibancaEncDBkey"'
-            buildConfigField "String", "BANCA_DB_KEY", '"mx.mauricio.storage.mibancaDBkey"'
+            buildConfigField "String", "BANCA_DB_ENCKEY_FILE", '"mibancaEncDBkey"'
+            buildConfigField "String", "BANCA_DB_KEY", '"mibancaDBkey"'
         }
     }
     compileOptions {

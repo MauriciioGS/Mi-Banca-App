@@ -11,7 +11,6 @@ import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.databinding.RegisterFragmentBinding
 import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
-import mx.mauriciogs.mibanca.login.util.RegisterCred
 
 @AndroidEntryPoint
 class SignUpFragment: Fragment(R.layout.register_fragment) {
@@ -54,17 +53,19 @@ class SignUpFragment: Fragment(R.layout.register_fragment) {
     }
 
     private fun showSignUpSucces() {
-        Toast.makeText(requireActivity(), "Correcto, aregistro",  Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), getString(R.string.success_register),  Toast.LENGTH_SHORT).show()
     }
 
     private fun showErrorUi(showError: Exception) {
         when (showError) {
-            is SignUpException.FullName -> {
-                Toast.makeText(requireActivity(), showError.error,  Toast.LENGTH_SHORT).show()}
-            is SignUpException.Password -> {
-                Toast.makeText(requireActivity(), showError.error,  Toast.LENGTH_SHORT).show()}
-            is SignUpException.UserName -> {
-                Toast.makeText(requireActivity(), showError.error,  Toast.LENGTH_SHORT).show()}
+            is SignUpException.FullName ->
+                Toast.makeText(requireActivity(), getString(showError.error),  Toast.LENGTH_SHORT).show()
+            is SignUpException.Password ->
+                Toast.makeText(requireActivity(), getString(showError.error),  Toast.LENGTH_SHORT).show()
+            is SignUpException.UserName ->
+                Toast.makeText(requireActivity(), getString(showError.error),  Toast.LENGTH_SHORT).show()
+            else ->
+                Toast.makeText(requireActivity(), getString(R.string.register_failed),  Toast.LENGTH_SHORT).show()
         }
     }
 }

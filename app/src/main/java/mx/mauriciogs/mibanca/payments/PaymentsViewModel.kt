@@ -12,10 +12,12 @@ import mx.mauriciogs.mibanca.payments.PaymentExceptionHandler.*
 import mx.mauriciogs.storage.cards.domain.CardsUseCase
 import mx.mauriciogs.storage.cards.domain.model.Cards
 import mx.mauriciogs.storage.coroutines.CoroutinesDispatchers
+import mx.mauriciogs.storage.payments.domain.PaymentsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class PaymentsViewModel @Inject constructor(private val cardsUseCase: CardsUseCase,
+                                            private val paymentsUseCase: PaymentsUseCase,
                                             private val coroutinesDispatchers: CoroutinesDispatchers): ViewModel(){
 
     private val _paymentsUIModelState = MutableLiveData<PaymentsUIModel>()
@@ -61,19 +63,6 @@ class PaymentsViewModel @Inject constructor(private val cardsUseCase: CardsUseCa
         }
     }
 
-    fun clearUiState() {
-        notifyUiState()
-    }
-
-    fun notifyUiState(showProgress: Boolean = false,
-                      showError: Exception? = null,
-                      showCardsAvailable: MutableList<Cards>? = null,
-                      validData: Boolean = false,
-                      paymentSuccess: Boolean = false) {
-        val paymentsUIModel = PaymentsUIModel(showProgress, showError, showCardsAvailable, validData, paymentSuccess)
-        _paymentsUIModelState.value = paymentsUIModel
-    }
-
     fun processPayment(
         currentTime: String,
         currentDate: String,
@@ -89,8 +78,24 @@ class PaymentsViewModel @Inject constructor(private val cardsUseCase: CardsUseCa
                     return@forEach
                 }
             }
-            println(payment)
+            paymentsUseCase.saveNewPayment(payment.toPayments())
+            withContext(coroutinesDispatchers.main) {
+                notifyUiState(showProgress = false, paymentSuccess = true)
+            }
         }
+    }
+
+    fun clearUiState() {
+        notifyUiState()
+    }
+
+    private fun notifyUiState(showProgress: Boolean = false,
+                              showError: Exception? = null,
+                              showCardsAvailable: MutableList<Cards>? = null,
+                              validData: Boolean = false,
+                              paymentSuccess: Boolean = false) {
+        val paymentsUIModel = PaymentsUIModel(showProgress, showError, showCardsAvailable, validData, paymentSuccess)
+        _paymentsUIModelState.value = paymentsUIModel
     }
 
 }

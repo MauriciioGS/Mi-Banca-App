@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -74,6 +75,19 @@ class PaymentsFragment: Fragment(R.layout.payments_fragment) {
         if (showError != null) showErrorUi(showError)
         if (showCardsAvailable != null) showMyCards(showCardsAvailable)
         if (validData) getPaymentMetaData()
+        if (paymentSuccess) showPaymentSuccess()
+    }
+
+    private fun showPaymentSuccess() {
+        Toast.makeText(requireActivity(), getString(R.string.payment_success), Toast.LENGTH_SHORT).show()
+        with(binding) {
+            textInputCardNumber.editText?.setText("")
+            textInputRecipientName.editText?.setText("")
+            textInputPaymentReason.editText?.apply {
+                setText("")
+                clearFocus()
+            }
+        }
     }
 
     private fun showMyCards(showCardsAvailable: MutableList<Cards>) {
@@ -113,7 +127,6 @@ class PaymentsFragment: Fragment(R.layout.payments_fragment) {
         val currentDate = sdf.format(Date())
         val sdfT = SimpleDateFormat("'Hora: 'HH:mm:ss z")
         val currentTime = sdfT.format(Date())
-        Toast.makeText(requireActivity(), "$currentDate, $currentTime $paymentLocation", Toast.LENGTH_LONG).show()
         if (paymentLocation.isNotEmpty())
             paymentsViewModel.processPayment(currentTime, currentDate, paymentLocation)
         else

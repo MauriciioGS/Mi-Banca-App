@@ -2,6 +2,7 @@ package mx.mauriciogs.mibanca.payments
 
 import mx.mauriciogs.storage.cards.domain.model.Cards
 import mx.mauriciogs.storage.common.empty
+import mx.mauriciogs.storage.payments.domain.model.Payments
 
 data class PaymentsUIModel (val showProgress: Boolean,
                             val showError: Exception?,
@@ -17,3 +18,14 @@ data class Payment ( var id: Int = 0,
                      var date: String = String.empty(),
                      var hour: String = String.empty(),
                      var location: String = String.empty())
+
+fun Payment.toPayments() = Payments(
+    id = id,
+    cardNumberHolder = cardNumberHolder,
+    recipientsCardNumber = recipientsCardNumber,
+    recipientsName = recipientsName,
+    paymentReason = paymentReason,
+    date = date,
+    hour = hour,
+    location = location
+)

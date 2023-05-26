@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.databinding.SigninFragmentBinding
+import mx.mauriciogs.mibanca.extensions.hideOrShow
 import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
 import mx.mauriciogs.mibanca.main.MainActivity
@@ -52,6 +53,7 @@ class SignInFragment: Fragment(R.layout.signin_fragment) {
     }
 
     private fun signInUi(singInUIModelState: SingInUIModel) = singInUIModelState.run {
+        binding.progressIndicator.hideOrShow(showProgress)
         if (showError != null) showUiError(showError)
         if (loginSuccess) startActivity(Intent(requireActivity(), MainActivity::class.java)).apply { requireActivity().finish() }
     }

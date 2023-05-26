@@ -1,5 +1,6 @@
 package mx.mauriciogs.mibanca.login.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.databinding.RegisterFragmentBinding
+import mx.mauriciogs.mibanca.extensions.hideOrShow
 import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
+import mx.mauriciogs.mibanca.login.LoginActivity
 
 @AndroidEntryPoint
 class SignUpFragment: Fragment(R.layout.register_fragment) {
@@ -48,12 +51,15 @@ class SignUpFragment: Fragment(R.layout.register_fragment) {
     }
 
     private fun signUpUiState(singUpUIModelState: SingUpUIModel) = singUpUIModelState.run {
+        binding.progressIndicator.hideOrShow(showProgress)
         if (showError != null) showErrorUi(showError)
         if (userSuccess) showSignUpSucces()
     }
 
     private fun showSignUpSucces() {
         Toast.makeText(requireActivity(), getString(R.string.success_register),  Toast.LENGTH_SHORT).show()
+        startActivity(Intent(requireActivity(), LoginActivity::class.java))
+        requireActivity().finish()
     }
 
     private fun showErrorUi(showError: Exception) {

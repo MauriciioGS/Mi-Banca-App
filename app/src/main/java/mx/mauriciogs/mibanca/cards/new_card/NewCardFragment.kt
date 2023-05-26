@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.cards.new_card.NewCardExceptionHandler.*
 import mx.mauriciogs.mibanca.databinding.NewcardFragmentBinding
+import mx.mauriciogs.mibanca.extensions.hideOrShow
 import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
 import mx.mauriciogs.mibanca.main.MainActivity
@@ -33,6 +34,7 @@ class NewCardFragment: Fragment(R.layout.newcard_fragment) {
     }
 
     private fun newCardUi(newCardUIModel: NewCardUIModel) = newCardUIModel.run {
+        binding.progressIndicator.hideOrShow(showProgress)
         if (showError != null) showErrorUi(showError)
         if (registerSuccess) showNewCardSuccess()
     }

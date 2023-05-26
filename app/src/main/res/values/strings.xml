@@ -20,4 +20,8 @@
     <string name="no_data_error">Por favor ingresa tu correo y contraseña</string>
     <string name="no_user_error">No existe el usuario</string>
     <string name="accept_permissions">Acepta los permisos para continuar utilizando Mi Banca App</string>
+    <string name="bad_num_card">Ingresa los 16 dígitos de la tarjeta</string>
+    <string name="bad_month">Ingresa un mes válido en formato mm</string>
+    <string name="bad_year_1">Ingresa un año correcto en el formato yyyy</string>
+    <string name="bad_year_2">Ingresa un año válido, no puede ser el actual o anterior</string>
 </resources>

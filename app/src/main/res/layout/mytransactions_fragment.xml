@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen32dp"
-        android:text="Mis movimientos"
+        android:text="@string/My_trans"
         android:textColor="@color/primaryVariant"
         android:textSize="@dimen/dimen24sp"
         android:fontFamily="@font/montserratsemibold"

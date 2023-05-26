@@ -7,9 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mx.mauriciogs.mibanca.login.signup.SignUpExceptionHandler
 import mx.mauriciogs.mibanca.login.util.RegisterCred
-import mx.mauriciogs.mibanca.login.util.toUserProfile
 import mx.mauriciogs.storage.account.domain.UserProfileUseCase
 import mx.mauriciogs.storage.common.success
 import mx.mauriciogs.storage.coroutines.CoroutinesDispatchers

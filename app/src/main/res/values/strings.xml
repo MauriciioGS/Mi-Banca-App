@@ -33,4 +33,27 @@
     <string name="location_error">Ocurrió un error al obtener la ubicación</string>
     <string name="payment_success">Pago realizado</string>
     <string name="no_transactions_found">Aún no tienes movimientos. En la sessión de pagos puedes realizar movimientos</string>
+    <string name="close_session">Cerrar Sesión</string>
+    <string name="my_account">Mi Cuenta</string>
+    <string name="do_payment">Hacer un pago</string>
+    <string name="select_a_card">Selecciona la tarjeta con la que deseas pagar:</string>
+    <string name="select_a_card_hint">Selecciona una tarjeta</string>
+    <string name="insert_benef_data">Ingresa los datos del beneficiario:</string>
+    <string name="numcard_hint">Número de tarjeta (16 dígitos)</string>
+    <string name="name_benef">Nombre del destinatario</string>
+    <string name="motivo_del_pago">Motivo del pago</string>
+    <string name="pay">Pagar</string>
+    <string name="My_cards">Mis tarjetas</string>
+    <string name="btn_new_card">Nueva tarjeta</string>
+    <string name="My_trans">Mis movimientos</string>
+    <string name="ingresa_los_datos_de_la_tarjeta">Ingresa los datos de la tarjeta</string>
+    <string name="introduce_los_16_d_gitos_de_la_tarjeta">Introduce los 16 dígitos de la tarjeta</string>
+    <string name="card_number_hint">Número de tarjeta</string>
+    <string name="exp_date_hint">Introduce la fecha de vencimiento:</string>
+    <string name="month_hint">Mes (MM)</string>
+    <string name="year_hint">Año (yyyy)</string>
+    <string name="registrar_tarjeta">Registrar tarjeta</string>
+    <string name="card">Tarjeta:</string>
+    <string name="card_number">Número de Tarjeta</string>
+    <string name="exp_date">Fecha de Expiración</string>
 </resources>

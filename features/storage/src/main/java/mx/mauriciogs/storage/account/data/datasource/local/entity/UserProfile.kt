@@ -10,3 +10,10 @@ data class UserProfile (
         var userName: String,
         var password: String,
         var userRealName: String)
+
+fun UserProfile.toUserProfile() = mx.mauriciogs.storage.account.domain.models.UserProfile(
+        id = id,
+        userName = userName,
+        password = password,
+        fullName = userRealName
+)

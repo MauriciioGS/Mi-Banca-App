@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="@color/whiteTxt"
-            android:text="Número de Tarjeta" />
+            android:text="@string/card_number" />
 
         <TextView
             android:id="@+id/textExpirationDate"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/whiteTxt"
-            android:text="Fecha de Expiración" />
+            android:text="@string/exp_date" />
 
     </LinearLayout>
 

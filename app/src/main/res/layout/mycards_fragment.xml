@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen32dp"
-        android:text="Mis tarjetas"
+        android:text="@string/My_cards"
         android:textColor="@color/primaryVariant"
         android:textSize="@dimen/dimen24sp"
         android:fontFamily="@font/montserratsemibold"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen16dp"
         android:layout_marginVertical="@dimen/dimen32dp"
-        android:text="Nueva tarjeta"
+        android:text="@string/btn_new_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen32dp"
             android:fontFamily="@font/montserratsemibold"
-            android:text="Hacer un pago"
+            android:text="@string/do_payment"
             android:textColor="@color/primaryVariant"
             android:textSize="@dimen/dimen24sp" />
 
@@ -33,7 +33,7 @@
             android:layout_marginTop="@dimen/dimen8dp"
             android:fontFamily="@font/montserratmedium"
             android:padding="8dp"
-            android:text="Selecciona la tarjeta con la que deseas pagar:"
+            android:text="@string/select_a_card"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
-                android:hint="Selecciona una tarjeta"
+                android:hint="@string/select_a_card_hint"
                 android:inputType="none"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
             android:layout_marginTop="@dimen/dimen16dp"
             android:fontFamily="@font/montserratmedium"
             android:padding="8dp"
-            android:text="Ingresa los datos del beneficiario:"
+            android:text="@string/insert_benef_data"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -86,7 +86,7 @@
                 style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Número de tarjeta (16 dígitos)"
+                android:hint="@string/numcard_hint"
                 android:inputType="number"
                 android:maxLength="16"
                 android:maxLines="1" />
@@ -108,7 +108,7 @@
                 style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre del destinatario"
+                android:hint="@string/name_benef"
                 android:inputType="textPersonName"
                 android:maxLines="1" />
 
@@ -129,7 +129,7 @@
                 style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Motivo del pago"
+                android:hint="@string/motivo_del_pago"
                 android:inputType="text"
                 android:maxLength="20"
                 android:maxLines="1" />
@@ -146,7 +146,7 @@
         android:layout_marginHorizontal="@dimen/dimen16dp"
         android:layout_marginTop="@dimen/dimen32dp"
         android:padding="12dp"
-        android:text="Pagar"
+        android:text="@string/pay"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

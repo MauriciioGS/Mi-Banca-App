@@ -14,7 +14,7 @@
         android:textSize="16sp"
         android:fontFamily="@font/montserratmedium"
         android:textColor="@color/primaryVariant"
-        android:text="Tarjeta:"
+        android:text="@string/card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

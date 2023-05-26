@@ -9,7 +9,7 @@
         android:title="Mis tarjetas"/>
 
     <item
-        android:id="@+id/myPaymentsFragment"
+        android:id="@+id/paymentsFragment"
         android:icon="@drawable/baseline_attach_money_24"
         app:showAsAction="ifRoom"
         android:title="Mis pagos"/>

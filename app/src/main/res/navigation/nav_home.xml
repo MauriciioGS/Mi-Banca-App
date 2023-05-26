@@ -15,10 +15,10 @@
             app:destination="@id/newCardFragment" />
     </fragment>
     <fragment
-        android:id="@+id/myPaymentsFragment"
-        android:name="mx.mauriciogs.mibanca.payments.MyPaymentsFragment"
-        android:label="MyPaymentsFragment"
-        tools:layout="@layout/mypayments_fragment" />
+        android:id="@+id/paymentsFragment"
+        android:name="mx.mauriciogs.mibanca.payments.PaymentsFragment"
+        android:label="PaymentsFragment"
+        tools:layout="@layout/payments_fragment" />
     <fragment
         android:id="@+id/myTransactionsFragment"
         android:name="mx.mauriciogs.mibanca.transactions.MyTransactionsFragment"

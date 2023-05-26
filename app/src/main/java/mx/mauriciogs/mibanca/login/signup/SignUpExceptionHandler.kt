@@ -18,7 +18,7 @@ class SignUpExceptionHandler @Inject constructor() {
     }
 
     companion object {
-        const val CONSIDERABLE_NAME_SIZE = 15
+        const val CONSIDERABLE_NAME_SIZE = 12
         const val MIN_CHARACTERS_PASSWORD = 6
     }
 }

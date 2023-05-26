@@ -26,4 +26,9 @@
     <string name="bad_year_2">Ingresa un año válido, no puede ser el actual o anterior</string>
     <string name="register_success">Tarjeta registrada</string>
     <string name="no_cards_found">No tienes tarjetas registradas</string>
+    <string name="no_card_selected">Selecciona una de tus tarjetas para pagar</string>
+    <string name="no_recip_card">Ingresa correctamente los 16 digitos de la tarjeta destino</string>
+    <string name="no_recip_name">Ingresa el nombre completo del beneficiario</string>
+    <string name="no_reason">Ingresa más de 3 caracteres como motivo de pago</string>
+    <string name="location_error">Ocurrió un error al obtener la ubicación</string>
 </resources>

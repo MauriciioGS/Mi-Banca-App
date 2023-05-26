@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mx.mauriciogs.mibanca.cards.mycards.MyCardsException
-import mx.mauriciogs.mibanca.login.signup.SingUpUIModel
+import mx.mauriciogs.mibanca.payments.PaymentExceptionHandler.*
 import mx.mauriciogs.storage.cards.domain.CardsUseCase
 import mx.mauriciogs.storage.cards.domain.model.Cards
 import mx.mauriciogs.storage.coroutines.CoroutinesDispatchers
@@ -23,6 +23,8 @@ class PaymentsViewModel @Inject constructor(private val cardsUseCase: CardsUseCa
         get() = _paymentsUIModelState
 
     private var cards = mutableListOf<Cards>()
+
+    private val payment = Payment()
 
     fun getMyCards() {
         viewModelScope.launch(coroutinesDispatchers.io) {
@@ -40,9 +42,55 @@ class PaymentsViewModel @Inject constructor(private val cardsUseCase: CardsUseCa
         }
     }
 
-    fun notifyUiState(showProgress: Boolean = false, showError: Exception? = null, showCardsAvailable: MutableList<Cards>? = null, paymentSuccess: Boolean = false) {
-        val paymentsUIModel = PaymentsUIModel(showProgress, showError, showCardsAvailable, paymentSuccess)
+    fun validateData(numCardHidden: String,
+                     recipientsCardNumber: String,
+                     recipientName: String,
+                     reason: String) {
+        when {
+            numCardHidden.isEmpty() -> notifyUiState(showError = NoCardSelected())
+            recipientsCardNumber.isEmpty() || recipientsCardNumber.length < 16 -> notifyUiState(showError = NoReceiptCard())
+            recipientName.isEmpty() || recipientName.length < 12 -> notifyUiState(showError = NoReceiptName())
+            reason.isEmpty() || reason.length < 3 -> notifyUiState(showError = NoReason())
+            else -> {
+                payment.cardNumberHolder = numCardHidden
+                payment.recipientsCardNumber = recipientsCardNumber
+                payment.recipientsName = recipientName
+                payment.paymentReason = reason
+                notifyUiState(validData = true)
+            }
+        }
+    }
+
+    fun clearUiState() {
+        notifyUiState()
+    }
+
+    fun notifyUiState(showProgress: Boolean = false,
+                      showError: Exception? = null,
+                      showCardsAvailable: MutableList<Cards>? = null,
+                      validData: Boolean = false,
+                      paymentSuccess: Boolean = false) {
+        val paymentsUIModel = PaymentsUIModel(showProgress, showError, showCardsAvailable, validData, paymentSuccess)
         _paymentsUIModelState.value = paymentsUIModel
+    }
+
+    fun processPayment(
+        currentTime: String,
+        currentDate: String,
+        paymentLocation: String
+    ) {
+        viewModelScope.launch(coroutinesDispatchers.io) {
+            payment.date = currentDate
+            payment.hour = currentTime
+            payment.location = paymentLocation
+            cards.forEach {
+                if (it.cardNumber.slice(12..it.cardNumber.lastIndex) == payment.cardNumberHolder.slice(2..payment.cardNumberHolder.lastIndex)) {
+                    payment.cardNumberHolder = it.cardNumber
+                    return@forEach
+                }
+            }
+            println(payment)
+        }
     }
 
 }

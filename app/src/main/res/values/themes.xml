@@ -25,6 +25,8 @@
     </style>
 
     <style name="button_secondary" parent="@style/Widget.Material3.Button.ElevatedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">@dimen/dimen1dp</item>
         <item name="cornerFamily">cut</item>
         <item name="cornerRadius">@dimen/dimen100dp</item>
         <item name="fontFamily">@font/montserratsemibold</item>

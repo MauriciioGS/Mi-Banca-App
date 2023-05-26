@@ -6,23 +6,23 @@
         android:id="@+id/myCardsFragment"
         android:icon="@drawable/baseline_credit_card_24"
         app:showAsAction="ifRoom"
-        android:title="Mis tarjetas"/>
+        android:title="Tarjetas"/>
 
     <item
         android:id="@+id/paymentsFragment"
         android:icon="@drawable/baseline_attach_money_24"
         app:showAsAction="ifRoom"
-        android:title="Mis pagos"/>
+        android:title="Pagos"/>
 
     <item
         android:id="@+id/myTransactionsFragment"
         android:icon="@drawable/baseline_format_list_bulleted_24"
         app:showAsAction="ifRoom"
-        android:title="Mis movimientos"/>
+        android:title="Movimientos"/>
 
     <item
         android:id="@+id/myAccountFragment"
         android:icon="@drawable/baseline_person_24"
         app:showAsAction="ifRoom"
-        android:title="Mi Cuenta"/>
+        android:title="Cuenta"/>
 </menu>

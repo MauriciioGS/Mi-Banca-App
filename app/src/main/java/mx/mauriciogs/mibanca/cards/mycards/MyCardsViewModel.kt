@@ -34,7 +34,7 @@ class MyCardsViewModel @Inject constructor(private val cardsUseCase: CardsUseCas
         }
     }
 
-    fun notifyUiState(showProgress: Boolean = false, showError: Exception? = null, showSuccess: MutableList<Cards>? = null) {
+    private fun notifyUiState(showProgress: Boolean = false, showError: Exception? = null, showSuccess: MutableList<Cards>? = null) {
         val myCardsUIModel = MyCardsUIModel(showProgress, showError, showSuccess)
         _myCardsUiModelState.value = myCardsUIModel
     }

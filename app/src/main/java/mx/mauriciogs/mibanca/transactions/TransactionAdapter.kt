@@ -15,7 +15,11 @@ class TransactionAdapter : ListAdapter<Payments, TransactionAdapter.TransactionV
             with(binding) {
                 textCardNumber.text = "**${itemTransaction.cardNumberHolder.slice(12..itemTransaction.cardNumberHolder.lastIndex)}"
                 textBeneficiaryName.text = itemTransaction.recipientsName
-                textBeneficiaryCardNumber.text = itemTransaction.recipientsCardNumber
+                val first4Dig = "${itemTransaction.recipientsCardNumber.slice(0..3)}"
+                val second4Dig = "${itemTransaction.recipientsCardNumber.slice(4..7)}"
+                val third4Dig = "${itemTransaction.recipientsCardNumber.slice(8..11)}"
+                val last4Dig = "${itemTransaction.recipientsCardNumber.slice(12..15)}"
+                textBeneficiaryCardNumber.text = "$first4Dig-$second4Dig-$third4Dig-$last4Dig"
                 textPaymentReason.text = itemTransaction.paymentReason
                 textLocation.text = itemTransaction.location
                 textDateTime.text = "${itemTransaction.date} ${itemTransaction.hour}"

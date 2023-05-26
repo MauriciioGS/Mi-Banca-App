@@ -14,3 +14,14 @@ data class Payments (
     var date: String,
     var hour: String,
     var location: String)
+
+fun Payments.toPaymentsTrans() = mx.mauriciogs.storage.payments.domain.model.Payments(
+    id = id,
+    cardNumberHolder = cardNumberHolder,
+    recipientsCardNumber = recipientsCardNumber,
+    recipientsName = recipientsName,
+    paymentReason = paymentReason,
+    date = date,
+    hour = hour,
+    location = location
+)

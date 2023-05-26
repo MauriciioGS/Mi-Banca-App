@@ -32,4 +32,5 @@
     <string name="no_reason">Ingresa más de 3 caracteres como motivo de pago</string>
     <string name="location_error">Ocurrió un error al obtener la ubicación</string>
     <string name="payment_success">Pago realizado</string>
+    <string name="no_transactions_found">Aún no tienes movimientos. En la sessión de pagos puedes realizar movimientos</string>
 </resources>

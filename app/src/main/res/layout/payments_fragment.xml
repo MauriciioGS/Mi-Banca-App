@@ -44,11 +44,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textCardSelection">
 
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                style="@style/EditTextGeneral"
                 android:id="@+id/editTextCardSelection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,6 +82,7 @@
             app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Número de tarjeta (16 dígitos)"
@@ -101,6 +104,7 @@
             app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre del destinatario"
@@ -121,6 +125,7 @@
             app:boxCornerRadiusTopStart="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Motivo del pago"

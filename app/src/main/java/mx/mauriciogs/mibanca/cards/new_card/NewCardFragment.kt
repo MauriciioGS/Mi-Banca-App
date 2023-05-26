@@ -39,6 +39,7 @@ class NewCardFragment: Fragment(R.layout.newcard_fragment) {
 
     private fun showNewCardSuccess() {
         Toast.makeText(requireActivity(), getString(R.string.register_success), Toast.LENGTH_LONG).show()
+        findNavController().popBackStack()
     }
 
     private fun showErrorUi(showError: Exception) {

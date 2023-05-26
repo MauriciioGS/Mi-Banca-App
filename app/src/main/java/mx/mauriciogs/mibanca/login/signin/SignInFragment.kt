@@ -52,12 +52,12 @@ class SignInFragment: Fragment(R.layout.signin_fragment) {
     }
 
     private fun signInUi(singInUIModelState: SingInUIModel) = singInUIModelState.run {
-        //TODO if (showProgress)
         if (showError != null) showUiError(showError)
         if (loginSuccess) startActivity(Intent(requireActivity(), MainActivity::class.java)).apply { requireActivity().finish() }
     }
 
     private fun showUiError(error: Exception) {
+        signInViewModel.clearUiState()
         when(error) {
             is SignInException.NoData -> Toast.makeText(requireActivity(), getString(error.error), Toast.LENGTH_SHORT).show()
             is SignInException.LoginError -> Toast.makeText(requireActivity(), getString(error.error), Toast.LENGTH_SHORT).show()
@@ -65,6 +65,15 @@ class SignInFragment: Fragment(R.layout.signin_fragment) {
             else -> {
                 Toast.makeText(requireActivity(), error.localizedMessage, Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        signInViewModel.clearUiState()
+        with(binding) {
+            etUsername.setText("")
+            etPass.setText("")
         }
     }
 

@@ -52,4 +52,8 @@ class SignInViewModel @Inject constructor(private val coroutinesDispatchers: Cor
         _signInUiModelState.value = signUpUIModel
     }
 
+    fun clearUiState() {
+        notifyUiState()
+    }
+
 }

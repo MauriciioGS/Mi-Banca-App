@@ -27,10 +27,7 @@ import kotlinx.coroutines.launch
 import mx.mauriciogs.mibanca.R
 import mx.mauriciogs.mibanca.cards.mycards.MyCardsException
 import mx.mauriciogs.mibanca.databinding.PaymentsFragmentBinding
-import mx.mauriciogs.mibanca.extensions.empty
-import mx.mauriciogs.mibanca.extensions.liveDataObserve
-import mx.mauriciogs.mibanca.extensions.nonNullObserve
-import mx.mauriciogs.mibanca.extensions.viewBinding
+import mx.mauriciogs.mibanca.extensions.*
 import mx.mauriciogs.mibanca.location.liveDataGPS
 import mx.mauriciogs.mibanca.location.permission.PermissionRequester
 import mx.mauriciogs.mibanca.payments.PaymentExceptionHandler.*
@@ -72,6 +69,7 @@ class PaymentsFragment: Fragment(R.layout.payments_fragment) {
     }
 
     private fun paymentsUi(paymentsUIModel: PaymentsUIModel) = paymentsUIModel.run {
+        binding.progressIndicator.hideOrShow(showProgress)
         if (showError != null) showErrorUi(showError)
         if (showCardsAvailable != null) showMyCards(showCardsAvailable)
         if (validData) getPaymentMetaData()

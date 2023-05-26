@@ -49,6 +49,7 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
     }
 
     private fun showErrorUi(showError: Exception) {
+        myCardsViewModel.clearUiState()
         when(showError) {
             is NoDataFound -> Toast.makeText(requireActivity(), showError.error, Toast.LENGTH_SHORT).show()
         }
@@ -58,6 +59,11 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
         with(binding) {
             btnNewCard.setOnClickListener { findNavController().navigate(MyCardsFragmentDirections.actionMyCardsFragmentToNewCardFragment()) }
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        myCardsViewModel.clearUiState()
     }
 
 }

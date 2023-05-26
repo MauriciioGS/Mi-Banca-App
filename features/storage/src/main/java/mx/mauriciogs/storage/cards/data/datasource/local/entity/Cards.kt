@@ -10,3 +10,10 @@ data class Cards (
     var cardHolder: String,
     var cardNumber: String,
     var expDate: String)
+
+fun Cards.toCards() = mx.mauriciogs.storage.cards.domain.model.Cards(
+    cardNumber = cardNumber,
+    cardHolder = cardHolder,
+    expDate = expDate,
+    id = id
+)

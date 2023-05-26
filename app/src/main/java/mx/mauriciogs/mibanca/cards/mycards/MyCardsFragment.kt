@@ -1,4 +1,4 @@
-package mx.mauriciogs.mibanca.cards
+package mx.mauriciogs.mibanca.cards.mycards
 
 import android.Manifest
 import android.content.Context
@@ -9,12 +9,16 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import mx.mauriciogs.mibanca.R
+import mx.mauriciogs.mibanca.cards.mycards.MyCardsException.NoDataFound
+import mx.mauriciogs.mibanca.cards.mycards.adapters.CardsAdapter
 import mx.mauriciogs.mibanca.databinding.MycardsFragmentBinding
+import mx.mauriciogs.mibanca.extensions.liveDataObserve
 import mx.mauriciogs.mibanca.extensions.nonNullObserve
 import mx.mauriciogs.mibanca.extensions.viewBinding
 import mx.mauriciogs.mibanca.location.liveDataGPS
@@ -25,6 +29,10 @@ import mx.mauriciogs.mibanca.main.MainActivity
 class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
 
     private val binding by viewBinding { MycardsFragmentBinding.bind(requireView()) }
+
+    private val myCardsViewModel: MyCardsViewModel by viewModels()
+
+    private val cardAdapter by lazy { CardsAdapter() }
 
     private val coarseLocation = PermissionRequester(this,
         Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -39,7 +47,38 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).binding.bottomNav.visibility = View.VISIBLE
+        initRecyclerView()
+        initObserver()
         checkGPS()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        myCardsViewModel.getMyCards()
+    }
+
+    private fun initRecyclerView() = binding.recyclerView.apply { adapter = cardAdapter }
+
+    private fun initObserver() {
+        liveDataObserve(myCardsViewModel.myCardsUiModelState) { myCardsUi(it ?: return@liveDataObserve)}
+    }
+
+    private fun myCardsUi(myCardsUIModel: MyCardsUIModel) = myCardsUIModel.run {
+        if (showError != null) showErrorUi(showError)
+        if (showSuccessCards != null) cardAdapter.submitList(showSuccessCards)
+    }
+
+    private fun showErrorUi(showError: Exception) {
+        when(showError) {
+            is NoDataFound -> Toast.makeText(requireActivity(), showError.error, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initUI() {
+        with(binding) {
+            btnNewCard.setOnClickListener { findNavController().navigate(MyCardsFragmentDirections.actionMyCardsFragmentToNewCardFragment()) }
+
+        }
     }
 
     private fun checkGPS() {
@@ -77,11 +116,5 @@ class MyCardsFragment: Fragment(R.layout.mycards_fragment) {
     private fun isTrueGPS(): Boolean {
         val mLocationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-    }
-
-    private fun initUI() {
-        with(binding) {
-            btnNewCard.setOnClickListener { findNavController().navigate(MyCardsFragmentDirections.actionMyCardsFragmentToNewCardFragment()) }
-        }
     }
 }

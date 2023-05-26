@@ -24,4 +24,6 @@
     <string name="bad_month">Ingresa un mes válido en formato mm</string>
     <string name="bad_year_1">Ingresa un año correcto en el formato yyyy</string>
     <string name="bad_year_2">Ingresa un año válido, no puede ser el actual o anterior</string>
+    <string name="register_success">Tarjeta registrada</string>
+    <string name="no_cards_found">No tienes tarjetas registradas</string>
 </resources>
